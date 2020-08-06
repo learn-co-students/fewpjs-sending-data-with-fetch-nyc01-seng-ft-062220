@@ -27,3 +27,4 @@ function submitData(name,email){
     });
 }
 
+//json-server --watch db.json
