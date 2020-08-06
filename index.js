@@ -23,7 +23,6 @@ let formData = {
         document.body.innerHTML = object[ "id" ]
     })
     .catch(function(error) {
-      alert("Bad things! Ragnarők!");
       document.body.innerHTML = error.message;
     });
 }
