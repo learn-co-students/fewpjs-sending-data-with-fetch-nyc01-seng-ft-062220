@@ -9,17 +9,22 @@ function submitData(userName, userEmail) {
         "Content-Type": "application/json",
         "Accept": "application/json",
         },
-        //unclear what goes in stringify
-        body: JSON.stringify({name: `${userName}`, user: `${userEmail}`})
+        //unclear wwhy my stringify isn't working
+        body: JSON.stringify({name: `${userName}`, email: `${userEmail}`})
     })
-    .this(response => response.json)
-    .this(convertedObject => bodyEl.innerHTML = convertedObject.id)
-    .catch(error => bodyEl.innerHTML == error.message)
+    .then(response => response.json())
+    .then(convertedObject => bodyEl.innerHTML = convertedObject.id)
+    // function(convertedObject){
+        //bodyEl.innerHTML = convertedObject.id
+    }
+    .catch(error => bodyEl.innerHTML = error.message)
+}// function(error) {
+    bodyEl.innerHTML = error.message
 }
 
-debugger
 
-/* original solution:
+
+/* original solution: didn't work either
 // Add your code here
 let configData = {
     method: "POST",
