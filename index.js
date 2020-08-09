@@ -1,49 +1,26 @@
 // Add your code here
 
-let submitData = (name, email) => {
-    fetch('http://localhost:3000/users', {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify {
-            name, 
-            email
 
+
+
+function submitData(name, email){
+    let configObject = {
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+            "accept": "application/json"
+        },
+        body: JSON.stringify({
+            name: name, 
+            email: email
         })
-    })
-    .then(resp => resp.json)
-    .then(console.log(resp))
+    }
+    
+   return fetch('http://localhost:3000/users', configObject)
+    .then(resp => resp.json())
+    .then(resp => document.body.innerHTML = resp["id"])
+    .catch(error => document.body.innerHTML = error.message)
 }
 
 
 
-
-
-
-
-
-
-// function submitData( name, email ) {
-//     return fetch( 'http://localhost:3000/users', {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//           "Accept": "application/json"
-//         },
-//         body: JSON.stringify( {
-//           name,
-//           email
-//         } )
-//       } )
-//       .then( function ( response ) {
-//         return response.json()
-//       } )
-//       .then( function ( object ) {
-//         document.body.innerHTML = object[ "id" ]
-//       } )
-//       .catch( function ( error ) {
-//         document.body.innerHTML = error.message
-//       } )
-//   }
